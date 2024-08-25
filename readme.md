@@ -1,57 +1,47 @@
-Objetivo:
+# Análisis de Sentimientos con Algoritmo de Palabras Clave
 
-Diseñar un algoritmo que mida que tan positivo, neutral o negativo es una frase.
+## Objetivo
+El objetivo de este proyecto es diseñar un algoritmo que evalúe qué tan positiva, neutral o negativa es una frase, basándose en la presencia de palabras clave predefinidas.
 
-Tecnologías a usar:
+## Tecnologías utilizadas
+- **Lenguaje**: Python 3
 
-Python
+## Descripción del Algoritmo
+El algoritmo analiza una lista de frases y determina la cantidad de palabras positivas, neutrales y negativas en cada una. Los resultados se presentan mediante los vectores `w` y `s`:
 
-Algoritmo:
+- **Vector `w`**: Es un vector binario que indica si una palabra clave está presente en la frase (`1`) o no (`0`).
+- **Vector `s`**: Es un vector que cuenta cuántas palabras positivas, neutrales y negativas contiene la frase. El formato es `[positivas, neutrales, negativas]`.
 
-w = w representa si una palabra de la frase pertenece a las palabras claves
-s = s representa la cantidad de palabras positivas, neutrales y negativas una frase posee.
+### Decisiones Lógicas
+1. **Procesamiento de texto**:
+   - Se utiliza la función `re.sub` para limpiar las frases de signos de puntuación, permitiendo que las palabras clave se detecten correctamente.
 
+2. **Vector `w`**:
+   - `w` se inicializa como un vector de ceros con una longitud igual al número total de palabras clave (positivas, neutrales y negativas).
+   - A medida que se recorren las palabras clave, si una de ellas está presente en la frase, la posición correspondiente en `w` se establece en `1`.
 
-A mencionar:
+3. **Vector `s`**:
+   - `s` se inicializa como un vector `[0, 0, 0]`, donde cada posición representa la cantidad de palabras positivas, neutrales y negativas, respectivamente.
+   - Cada vez que una palabra clave se encuentra en la frase, se incrementa el valor en la posición correspondiente de `s`.
 
-instalar re por que el input de la data no es el ideal
+4. **Calidad Promedio y Sentimiento Promedio**:
+   - **Calidad Promedio (`avg_w`)**: Es la proporción de palabras clave que aparecen en la frase respecto al total de palabras clave.
+   - **Sentimiento Promedio**: Se calcula como la diferencia entre el número de palabras positivas y negativas en la frase.
 
-para mejor funcionamiento del algoritmo tenemos que hacer que cuente no solamente las palabras, sino tambien el conjunto de las mismas, el hacer tan separado
-no hace que tengamos un mejor control del resultado de si es positiva o negativa, ejemplo esta frase:
+5. **Índices de Palabras Positivas, Neutrales y Negativas**:
+   - Se calculan como la proporción de palabras positivas, neutras y negativas respecto al total de palabras clave encontradas en la frase.
 
-    "Out football team is not at its best, but we are working hard to improve. We will get there",
+### Ejecución del Proyecto
+Para correr el proyecto, sigue los siguientes pasos:
 
-o esta:
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/tu-usuario/analisis-sentimientos-algebra.git
+   cd analisis-sentimientos-algebra
+   
+2. **Instalar Python**
+    Descargar la ultima version (3) de python aca:
+    https://www.python.org/downloads/
 
-    "We live in a world full of hate and violence, but we can change that. We have the power to make a difference",
-
-Segun el algoritmo esta frase es sumamente negativa:
-
-    "The fishermen know that the sea is dangerous and the storm terrible, but they have never found these dangers sufficient reason for remaining ashore",
-
-Pero enrealidad el mensjae no lo es, por lo que para que el algoritmo funcione de verdad de la mejor manera, deberiamos tener en cuenta el core del mensaje tambien.
-
-
-sentences = [
-    "The beautiful sunrise filled me with hope, but the darkness soon returned",
-    "Her kindness is always appreciated, though her anger can be overwhelming",
-    "This celebration is a joyful event, despite the sadness in the air",
-    "The new policy is beneficial, yet its drawbacks are significant",
-    "He was generous with his praise, but his criticism was harsh",
-    "The exciting opportunity came with significant risks",
-    "She is known for her honesty, although her rudeness is also notorious",
-    "The peaceful morning was interrupted by the loud construction noise",
-    "The innovative design is impressive, but the execution is flawed",
-    "Their collaboration brought success, despite some underlying tension",
-    "The generous donation was tainted by ulterior motives",
-    "The serene atmosphere was ruined by an unexpected argument.",
-    "The optimistic outlook was dampened by the reality of the situation",
-    "The bright future is promising, though uncertainty remains",
-    "The supportive community faced challenges, but persevered through adversity"
-]
-
-key_words = {
-    "positive_words" : ["beautiful", "hope", "kindness", "joyful", "beneficial", "generous", "exciting", "honesty", "peaceful", "innovative", "success", "serene", "optimistic", "bright", "supportive"],
-    "neutral_words" : ["policy", "morning", "design", "execution", "collaboration", "situation", "reality", "argument", "future", "community"],
-    "negative_words" : ["darkness", "anger", "sadness", "drawbacks", "harsh", "risks", "rudeness", "noise", "flawed", "tension", "ulterior", "ruined", "dampened", "uncertainty", "adversity"]
-}
+3. **Correr el script** 
+    python3 script.py
