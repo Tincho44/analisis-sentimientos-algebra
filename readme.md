@@ -38,10 +38,11 @@ Para correr el proyecto, sigue los siguientes pasos:
    ```bash
    git clone https://github.com/tu-usuario/analisis-sentimientos-algebra.git
    cd analisis-sentimientos-algebra
-   
+
 2. **Instalar Python**
     Descargar la ultima version (3) de python aca:
     https://www.python.org/downloads/
 
 3. **Correr el script** 
+   ```bash
     python3 script.py
