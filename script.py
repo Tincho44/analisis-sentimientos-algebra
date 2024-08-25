@@ -56,7 +56,7 @@ for phrase in sentences:
     print("W por frase:",w)
     print("S por frase:", s)                      
 
-    avg_w = sum(w) / len(w) # calculo la calidad promedio
+    avg_w = sum(w) / len(w) # calculo la calidad promedio, cuantas palabras clave estan en la frase 
     sentimiento_promedio = (1 * s[0]) + (0 * s[1]) + (-1 * s[2])
 
     vectores_w.append(w)
@@ -64,7 +64,19 @@ for phrase in sentences:
     calidad_promedio.append(avg_w)
     promedio_sentimiento.append(sentimiento_promedio)
 
+    sTotal = sum(s) # sumo todos los valores que estan en S, si tiene 3 palabras, da 3, si tiene 2 palabras da 2, etc
+
+    # calculo el porcentaje de palabras positivas, neutrales y negativas
+    positivas = (s[0] / sTotal) 
+    neutrales = (s[1] / sTotal)
+    negativas = (s[2] / sTotal)
+
+    # estadisticas por palabra recorrida de todas las frases
     print("Sentimiento Promedio por frase:", sentimiento_promedio)
+    print("Calidad promedio por frase:", avg_w)
+    print("Indice de Palabras positivas:", positivas)
+    print("Indice de Palabras neutrales:", neutrales)
+    print("Indince de Palabras negativas:", negativas)
     print(" ")
 
 print("Frase más positiva:", sentences[promedio_sentimiento.index(max(promedio_sentimiento))])
